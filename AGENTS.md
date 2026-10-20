@@ -19,13 +19,22 @@ employee sends to AI
 
 The product should help employees use AI safely, not act like employee-surveillance software.
 
+The long-term product direction combines:
+- **AI Pass Workspace** — a company-controlled AI work surface
+- **AI Pass Guardrails** — protection when employees use external AI tools directly
+- **AI Pass Admin** — policies, activity, devices, destinations
+
+See `docs/PRODUCT_DIRECTION.md` for product intent.
+
 ## Read the relevant source of truth
 
 Read only what the task needs:
 
 - Build phase scope/gates: `README.md`
-- Service boundaries, data flow, repository structure: `docs/ARCHITECTURE.md`
+- Product direction: `docs/PRODUCT_DIRECTION.md`
+- Service boundaries/data flow: `docs/ARCHITECTURE.md`
 - Any UI/UX work: `docs/DESIGN_SYSTEM.md`
+- Visual reference intent: `docs/UI_REFERENCE_BOARD.md`
 - Previous observed implementation evidence: `docs/BUILD_LOG.md`
 
 Do not reread every document for trivial edits.
@@ -43,6 +52,10 @@ When asked to implement a numbered phase:
 A phase does not pass on code inspection alone.
 
 Do not silently broaden scope to “help future phases.”
+
+Do not stop merely to report intermediate progress. Continue until the requested phase passes, fails, or there is a genuine blocker that requires user input.
+
+Use bounded commands. Never leave dev servers, watchers, package queries, interactive prompts, or subprocesses indefinitely blocking the active shell. Temporary servers used for verification must have explicit lifecycle/cleanup.
 
 ## Privacy boundary — non-negotiable
 
@@ -91,18 +104,25 @@ For a security-sensitive change, add or update a regression test.
 
 ## UI rules
 
-For UI tasks, follow `docs/DESIGN_SYSTEM.md`.
+For UI tasks, follow both:
+- `docs/DESIGN_SYSTEM.md`
+- `docs/UI_REFERENCE_BOARD.md`
 
 Critical constraints:
-- polished, modern, deliberate UI
+- **light-first** premium glassmorphism is mandatory
+- the previous dark/graphite/“Orbit” direction is retired
+- visible frosted-glass material must use blur + translucency + edge highlight + soft shadow
+- background must have subtle tonal variation so the glass reads clearly
 - no generic white SaaS dashboard
 - no default shadcn/component-library visual appearance
-- no neon/cyberpunk security cliché
-- glass is selective, not everywhere
+- no dark security console / neon / cyberpunk styling
+- glass is selective and hierarchical, not applied equally everywhere
 - status uses icon + label + color
 - keyboard/focus states are required
 - support `prefers-reduced-motion`
 - animations must clarify state changes, not decorate continuously
+- visible employee chat surface is **AI Pass Workspace**, not “Orbit”
+- do not add real AI-provider/model integrations unless explicitly requested by a later phase
 
 Reuse shared tokens/components instead of introducing one-off styling.
 
@@ -167,8 +187,10 @@ Local commits are fine only when the user's requested workflow calls for them.
 
 Update:
 - `README.md` when build phases or run instructions change
+- `docs/PRODUCT_DIRECTION.md` when product scope/direction changes
 - `docs/ARCHITECTURE.md` when service/data boundaries change
 - `docs/DESIGN_SYSTEM.md` when durable UI rules/tokens change
+- `docs/UI_REFERENCE_BOARD.md` when durable visual references change
 - `docs/BUILD_LOG.md` with observed phase evidence
 
 Do not duplicate the same rule across multiple files unless needed for safety.
