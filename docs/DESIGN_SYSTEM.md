@@ -1,407 +1,451 @@
 # AI Pass — Design System
 
-## 1. Design direction: **Signal Glass**
+## 1. Visual direction: **Light Glass Minimalism**
 
-AI Pass should look like a premium, current enterprise product that happens to be security software — not like a traditional SIEM dashboard and not like a generic template.
+This document is the visual source of truth for AI Pass.
 
-The visual direction is called **Signal Glass**:
+The previous dark/graphite direction is retired. **Do not use it as a fallback.**
 
-- graphite/charcoal foundation rather than pure black
-- high-legibility near-white typography
-- restrained indigo/periwinkle primary accent
-- optional teal secondary accent
-- semantic green / amber / red for AI Pass decisions
-- semi-transparent glass for navigation, floating controls and intervention layers
-- more solid surfaces for dense content
-- soft hairline borders
-- subtle ambient light/gradient in the page background
-- crisp iconography
-- purposeful micro-motion
-- generous spacing without wasting screen area
+AI Pass must be a **light-first, premium glassmorphism product**: airy, minimal, softly dimensional, modern, calm, and clearly usable as enterprise software.
 
-The result should feel:
+The intended impression is:
+
+> Apple-like material discipline + premium fintech clarity + modern SaaS interaction design, expressed as an original AI Pass interface.
+
+It should feel:
+- bright
 - calm
+- premium
 - intelligent
-- fast
+- lightweight
 - trustworthy
 - slightly futuristic
-- enterprise-ready
+- highly polished
 
-It should **not** feel:
-- hacker/cyberpunk
-- neon
-- gaming-oriented
-- sterile all-white
-- overloaded with charts
-- like a default shadcn dashboard
-- like a direct copy of Linear, Vercel, Apple, Attio, or the existing Chromastic site
-
----
-
-# 2. Research-informed principles
-
-## Existing Chromastic reference
-
-The user's `ai-infrastructure-website` already uses:
-- Geist
-- rounded geometry
-- a cool blue accent
-- soft neutral surfaces
-- pill controls
-- sticky/translucent navigation
-- soft shadows
-- clean hierarchy
-
-Keep the **discipline and simplicity**, but move AI Pass away from its overly white/flat presentation.
-
-Do not copy the marketing-site scale or huge hero typography into the application.
-
-## Linear
-Current Linear design guidance emphasizes:
-- calmer interface
-- consistent header/navigation placement
-- navigation receding so work content remains primary
-- dense information without equal visual weight everywhere
-
-Apply:
-- dimmer sidebar than workspace
-- predictable page header
-- quiet secondary controls
-- strong active-content focus
-
-## Attio
-Useful patterns:
-- compact high-speed UI
-- keyboard-first navigation
-- command palette/search
-- data-rich lists that still look polished
-- modern elevated dark surfaces
-
-Apply:
-- compact admin rows
-- direct controls
-- optional command/search affordance later
-- avoid oversized dashboard cards
-
-## Apple material / Liquid Glass
-Apple's material guidance treats glass as a **functional layer**, not decoration everywhere.
-
-Apply:
-- glass in sidebar/top chrome, floating AI Pass intervention, transient overlays/popovers
-- solid or lightly translucent surfaces for dense tables/content
-- preserve contrast
-- do not stack multiple blurry glass cards without reason
-
-## Vercel interface guidance
-Apply:
-- design empty, loading, dense and error states
-- avoid dead ends
-- inline help before tooltips
-- use status text/icons in addition to color
-- error messages explain the next action
-- stable loading skeletons
-
-## Accessibility foundation
-Prefer Radix primitives or equivalent accessible primitives for:
-- dialog
-- popover
-- dropdown
-- tabs
-- tooltip
-- switches
-- keyboard/focus management
+It must **not** feel:
+- like the current dark “Orbit” chat shell
+- like a generic ChatGPT clone
+- like a generic shadcn dashboard
+- like a dark security operations console
+- cyberpunk, neon, hacker-themed, or gaming-oriented
+- flat white-on-white with no depth
+- over-blurred or illegible
+- like a concept render that sacrifices usability for effects
 
 ---
 
-# 3. Theme
+# 2. Non-negotiable visual rules
 
-## Default theme
+1. **Light mode is the default and only required theme for the demo.**
+2. The canvas must not be pure white. Use a soft atmospheric backdrop so glass is visually meaningful.
+3. Glassmorphism must be clearly visible in navigation, floating controls, key cards, composer/intervention surfaces, and selected dashboard modules.
+4. Dense tables and forms may use more opaque translucent surfaces for readability.
+5. Use blur, transparency, edge highlights, and soft shadow together. Transparency alone is not glassmorphism.
+6. Keep color restrained. The interface is primarily neutral with one cool product accent plus semantic state colors.
+7. Motion must be subtle and functional.
+8. The UI must remain accessible and legible at all times.
+9. No dark-first fallback. Do not restore the previous graphite palette.
+10. Do not invent a separate product brand such as “Orbit.” The product is **AI Pass**; the controlled chat surface is **AI Pass Workspace**.
 
-For the demo, use a **dark-first graphite theme**.
+---
 
-Light mode can be added later; do not spend initial phases duplicating every surface.
+# 3. Reference intent
 
-### Core tokens
+See `docs/UI_REFERENCE_BOARD.md` for the explicit visual reference hierarchy.
 
-These are starting points, not immutable branding:
+The key visual traits to reproduce **in spirit, not by copying** are:
+- translucent white surfaces over a softly varied background
+- visible backdrop blur
+- fine bright borders / edge highlights
+- deep but diffuse shadows
+- floating navigation and panels
+- comfortable negative space
+- minimal typography
+- one restrained accent
+- premium product/fintech polish
+
+The negative reference is the existing dark “Orbit” implementation: technically clean, but too dark, flat, conventional, and generic for the intended product identity.
+
+---
+
+# 4. Canvas and atmosphere
+
+True glass needs visual information behind it. Therefore the page background should be a quiet atmospheric canvas rather than plain `#fff`.
+
+## Preferred canvas
+
+Use a warm/cool off-white foundation with very soft radial or mesh gradients:
 
 ```css
---bg-0: #090C11;
---bg-1: #0D1118;
---surface-1: #111722;
---surface-2: #151D29;
---surface-3: #1A2331;
-
---glass: rgba(20, 27, 39, 0.72);
---glass-strong: rgba(18, 24, 34, 0.88);
-
---line: rgba(255, 255, 255, 0.08);
---line-strong: rgba(255, 255, 255, 0.14);
-
---text-1: #F4F7FB;
---text-2: #A8B1C0;
---text-3: #727D8E;
-
---accent: #7C8DFF;
---accent-strong: #91A0FF;
---accent-soft: rgba(124, 141, 255, 0.14);
-
---teal: #59D5C3;
---teal-soft: rgba(89, 213, 195, 0.13);
-
---green: #50D890;
---green-soft: rgba(80, 216, 144, 0.13);
-
---amber: #F0B85A;
---amber-soft: rgba(240, 184, 90, 0.14);
-
---red: #FF737D;
---red-soft: rgba(255, 115, 125, 0.14);
+--canvas: #F5F7FB;
+--canvas-warm: #FBFAF7;
+--canvas-blue: #EEF4FF;
+--canvas-mint: #EFFBF7;
 ```
 
-Do not turn every surface into a colored gradient.
-
-Accent color should occupy a small portion of the screen.
-
----
-
-# 4. Background treatment
-
-Admin and demo chat can use a subtle ambient background:
-
-```text
-deep graphite base
-+
-very soft radial indigo glow in one corner
-+
-very soft teal/blue secondary glow
-+
-optional fine noise texture
-```
-
-Requirements:
-- the effect is almost imperceptible
-- no animated rainbow gradients
-- no bright blobs competing with data
-- content remains readable with glows removed
-
----
-
-# 5. Material system
-
-Use three levels.
-
-## Level 0 — canvas
-Opaque dark background.
-
-## Level 1 — content
-Mostly solid or 92–98% opaque surfaces.
-
-Used for:
-- tables
-- activity lists
-- policy forms
-- dense information
-- settings
-
-## Level 2 — glass / transient chrome
-Blurred/translucent.
-
-Used for:
-- sidebar
-- top navigation/context bar
-- dropdowns/popovers
-- floating AI Pass intervention card
-- command/search surface
-- modal chrome
-
-Suggested CSS direction:
+Suggested background concept:
 
 ```css
-background: rgba(...);
-backdrop-filter: blur(18px) saturate(130%);
-border: 1px solid rgba(255,255,255,.09);
-box-shadow:
-  0 18px 50px rgba(0,0,0,.28),
-  inset 0 1px 0 rgba(255,255,255,.05);
+background:
+  radial-gradient(circle at 18% 8%, rgba(126, 151, 255, .14), transparent 34%),
+  radial-gradient(circle at 84% 18%, rgba(116, 218, 198, .12), transparent 30%),
+  radial-gradient(circle at 50% 100%, rgba(255, 215, 177, .10), transparent 34%),
+  #F5F7FB;
 ```
 
-Avoid glass on glass on glass.
+Optional:
+- extremely subtle fine noise/grain at <= 2–3% perceived opacity
+- static blurred ambient shapes behind selected areas
+
+Do not:
+- animate the background continuously
+- use rainbow gradients
+- use saturated blobs
+- place busy photography behind the admin application
+
+The background should make the glass readable while still disappearing from conscious attention.
 
 ---
 
-# 6. Geometry
+# 5. Color tokens
 
-Preferred:
-- application panels: 16–20 px radius
-- large floating intervention: 18–22 px
-- buttons: 10–14 px radius
-- pills/status chips: fully rounded
-- table rows: 10–12 px hover region if individually surfaced
+These are the preferred starting tokens. Minor tuning is allowed only if contrast/material quality improves.
 
-Do not use giant 40–60 px marketing-site radii throughout the admin application.
+```css
+:root {
+  /* canvas */
+  --bg-canvas: #F5F7FB;
+  --bg-canvas-warm: #FBFAF7;
 
----
+  /* glass / surfaces */
+  --glass-subtle: rgba(255, 255, 255, 0.42);
+  --glass: rgba(255, 255, 255, 0.58);
+  --glass-strong: rgba(255, 255, 255, 0.76);
+  --surface-solid: rgba(255, 255, 255, 0.90);
 
-# 7. Typography
+  /* borders/highlights */
+  --glass-line: rgba(255, 255, 255, 0.72);
+  --glass-line-strong: rgba(255, 255, 255, 0.92);
+  --line-neutral: rgba(50, 66, 92, 0.10);
+  --line-neutral-strong: rgba(50, 66, 92, 0.16);
 
-Default: **Geist**.
+  /* text */
+  --text-1: #152033;
+  --text-2: #556176;
+  --text-3: #7D889A;
+  --text-inverse: #FFFFFF;
 
-Hierarchy:
+  /* product accent */
+  --accent: #6979F8;
+  --accent-strong: #5568F2;
+  --accent-soft: rgba(105, 121, 248, 0.12);
+  --accent-softer: rgba(105, 121, 248, 0.07);
 
-```text
-Page title       28–34 px / medium
-Section title    17–20 px / medium
-Body             14–15 px
-Compact body     13 px
-Metadata         12–13 px
-Metric value     26–36 px / medium
+  /* optional secondary signal */
+  --aqua: #43C8B5;
+  --aqua-soft: rgba(67, 200, 181, 0.11);
+
+  /* semantic states */
+  --safe: #249C68;
+  --safe-soft: rgba(36, 156, 104, 0.10);
+  --protect: #C98724;
+  --protect-soft: rgba(201, 135, 36, 0.11);
+  --block: #D5535D;
+  --block-soft: rgba(213, 83, 93, 0.10);
+}
 ```
 
-Principles:
-- tight but not extreme negative tracking
-- use tabular numerals for metrics
-- avoid giant headings inside the product
-- sentence case labels
-- no ALL CAPS except tiny optional technical tags
+Accent color should occupy a small minority of the interface.
+
+Never tint the entire dashboard blue/purple.
 
 ---
 
-# 8. Navigation
+# 6. The glass material recipe
 
-## Admin shell
+Glass should look physically plausible enough to feel premium but not photorealistic or distracting.
 
-Desktop:
-- left sidebar about 232–252 px expanded
-- optional compact state later
-- sidebar slightly dimmer than main workspace
-- top context row belongs to content, not a second oversized nav bar
+## Standard glass
 
-Suggested navigation:
-- Overview
-- Activity
-- Policies
-- Devices
-- Settings
+```css
+.glass {
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+  box-shadow:
+    0 22px 60px rgba(40, 56, 82, 0.10),
+    0 4px 16px rgba(40, 56, 82, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+```
 
-Bottom:
-- demo tenant
-- user/avatar
-- version/environment indicator
+## Strong glass
+For composers, modals, intervention cards, and panels requiring stronger readability:
 
-Active nav:
-- subtle accent-tinted surface
-- icon
-- text
-- possibly a thin luminous edge, not a huge filled block
+```css
+.glass-strong {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(28px) saturate(130%);
+  -webkit-backdrop-filter: blur(28px) saturate(130%);
+  box-shadow:
+    0 28px 70px rgba(35, 53, 83, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+```
 
-Do not put all navigation inside floating pill buttons.
+## Dense information surface
+Tables/forms can be clearer:
+
+```css
+.surface-readable {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(61, 75, 98, 0.08);
+  box-shadow: 0 14px 36px rgba(45, 60, 88, 0.07);
+}
+```
+
+## Important
+A plain translucent white card with no backdrop blur, edge highlight, or shadow is **not sufficient**.
+
+Do not stack many equally transparent glass cards on top of each other. Use a hierarchy of canvas → glass shell → readable surface.
 
 ---
 
-# 9. Dashboard composition
+# 7. Geometry
+
+The interface should feel softly sculpted, not bubbly.
+
+Recommended:
+- floating app shell/sidebar: 22–28 px radius
+- major cards/panels: 18–24 px
+- composer/intervention: 20–24 px
+- buttons/inputs: 11–14 px
+- compact controls: 9–12 px
+- pills/badges: fully rounded
 
 Avoid:
-- 8–12 equal KPI cards
-- donut charts for everything
-- large empty cards
-- “security operations center” visual clutter
+- 40–60 px radii on every application component
+- completely square enterprise panels
+- excessive pill-shaped controls
 
-Prefer:
+---
+
+# 8. Typography
+
+Default font: **Geist**.
+
+Use a minimal typography scale:
 
 ```text
-[ Page title + concise context + protected-state indicator ]
+Page title        30–34 px / 540–600
+Large metric      28–36 px / 560–620
+Section title     17–20 px / 550–620
+Body              14–15 px / 400–480
+Compact body      13–14 px
+Metadata          12–13 px
+```
+
+Rules:
+- sentence case
+- tabular numerals for metrics/time
+- restrained negative letter spacing only on headings
+- no enormous marketing typography inside the application
+- no monospaced “security terminal” visual language except actual code/IDs
+
+---
+
+# 9. Overall application composition
+
+The app should feel like a set of lightly floating glass layers inside a bright atmospheric workspace.
+
+## Admin
+
+Preferred desktop composition:
+
+```text
+┌───────────────────────────────────────────────────────────────┐
+│  floating glass sidebar  │  workspace header                │
+│                          │                                  │
+│  Overview                │  title / context / actions       │
+│  Activity                │                                  │
+│  Policies                │  metrics / activity / devices    │
+│  Devices                 │                                  │
+│  Settings                │                                  │
+└───────────────────────────────────────────────────────────────┘
+```
+
+The sidebar should be a **light translucent floating rail/panel**, not a dark slab touching every viewport edge.
+
+Suggested spacing:
+- 16–24 px outer canvas inset
+- 18–24 px gap between floating sidebar and main content
+- main content max width appropriate to viewport, not a narrow centered marketing column
+
+## Navigation material
+- stronger glass than the page canvas
+- subtle edge highlight
+- soft shadow
+- active item uses a quiet accent-tinted inset surface
+- icons are outline, monochrome, restrained
+
+---
+
+# 10. Admin dashboard
+
+The admin dashboard must look like a premium management workspace, not a SOC dashboard.
+
+Primary hierarchy:
+
+```text
+[ Overview                                        status ]
+[ concise subtitle                         primary action ]
 
 [ Protected devices ] [ Protected interactions ] [ Blocked ]
 
-[ Recent activity — primary wide surface         ]
-[                                              ]
-[                                              ]
+[ Recent activity — wide anchor surface                         ]
+[                                                               ]
 
-[ AI destinations / policy health ] [ Devices ]
+[ AI destinations / policy health ] [ Device protection        ]
 ```
 
-The activity surface should be the visual anchor.
+## Metrics
+- compact
+- strong number + quiet label
+- optional tiny trend/secondary value
+- no giant colorful KPI cards
 
-Metrics should be compact and calm.
+## Activity
+- should be the main information anchor
+- readable translucent/solid surface inside the glass workspace
+- 44–52 px rows
+- quiet dividers
+- status badge + text
+- no raw prompt excerpts
+
+## Charts
+Use only when they genuinely improve understanding.
+Do not add charts merely to fill the dashboard.
+
+If a chart exists:
+- thin lines
+- soft grid
+- restrained accent
+- no rainbow legend
 
 ---
 
-# 10. AI Pass intervention UI
+# 11. AI Pass Workspace (formerly generic demo chat)
 
-This is the most important visual component in the product.
+`apps/demo-chat` remains the technical package name for now, but the visible product surface should be branded **AI Pass Workspace**.
 
-It appears close to the AI composer, not in the center of the page unless required.
+It is both:
+1. the stable local test surface for the demo; and
+2. a visual prototype of the future company-controlled AI workspace described in `docs/PRODUCT_DIRECTION.md`.
 
-## Shared anatomy
+It must not visually imitate ChatGPT or Claude closely.
+
+## Workspace layout
+
+Preferred:
+- airy canvas
+- light floating/glass navigation
+- central conversation area with generous whitespace
+- small context/model/destination control near the top
+- glass composer floating near the bottom
+- AI Pass protection state integrated into the composer
+
+### Important scope rule
+Do **not** integrate real model providers during the UI revision.
+A model/destination selector may be shown only if it represents existing demo destination state or a clearly non-functional future-ready shell. Do not invent provider integrations.
+
+## Conversation styling
+- user messages: lightly tinted/opaque bubble or aligned card
+- assistant messages: mostly open text with subtle structural grouping
+- avoid giant dark chat bubbles
+- avoid dense permanent left conversation rail unless it improves demo usability
+- if recent chats are shown, they should be light and quiet
+
+## Composer
+The composer is a signature object:
+- strong frosted glass
+- subtle floating shadow
+- attachment/control buttons inset cleanly
+- send button uses product accent
+- `Protected by AI Pass` status is integrated, not an afterthought
+
+---
+
+# 12. AI Pass intervention UI
+
+This is the most important component in the product.
+
+It should feel like a small piece of intelligent glass appearing at the exact moment help is needed.
+
+Shared anatomy:
 
 ```text
-[ shield/status icon ]  AI Pass        [ status pill ]
+[ shield/status icon ] AI Pass               [ status ]
 
 Title
-One-line explanation
+Short explanation
 
-Detected categories (if useful)
-- category label
-- never raw value
+[ optional category chips ]
 
-[ primary action ] [ secondary action ]
+[ primary action ]  [ secondary ]
 ```
 
-### SCANNING
-Use:
-- compact progress/sweep animation
-- label `Checking before send…`
-- duration should reflect real work; do not artificially delay normal sends
+## Scanning
+- small progress/sweep state
+- copy: `Checking before send…`
+- no artificial delay
+- no “cyber scan” animation
 
-### GREEN
-Do not interrupt with a large modal.
-
-Use:
-- small confirmation pill/card
-- green icon
-- `Safe to send`
+## Safe / Green
+- minimal acknowledgement
+- green icon + `Safe to send`
+- small pill/card
 - auto-dismiss quickly
 
-### YELLOW
-This is the signature state.
+## Protect / Yellow
+This is the signature interaction.
 
 Use:
-- warm amber edge/light
-- clear title such as `Sensitive information detected`
-- short explanation
-- category chips
+- frosted white panel
+- subtle amber semantic ring/glow, not full amber fill
+- title: `Sensitive information detected`
+- category chips without raw values
 - primary: `Send safely`
 - secondary: `Cancel`
-- optional small `Why?`
+- optional `Why?`
 
-The action should feel constructive, not punitive.
+The interaction should feel helpful and productive.
 
-### RED
+## Block / Red
 Use:
-- restrained red, not flashing
-- `Restricted information`
-- reason tied to company policy
-- explain the safe next action
-- no scary “BREACH DETECTED” copy
-
-The card should feel authoritative and calm.
+- frosted white panel
+- restrained red edge/ring
+- calm copy such as `Restricted information`
+- explain the company-policy reason
+- provide safe next action
+- no flashing, shaking, alarm styling, or “BREACH” copy
 
 ---
 
-# 11. Status language
+# 13. Status language
 
 Never rely on color alone.
 
-Use this consistent trio:
+Canonical states:
 
 ```text
-GREEN   Safe
-YELLOW  Protected / Needs protection
-RED     Blocked
+Safe       green   check/shield icon
+Protected  amber   shield/spark icon
+Blocked    red     alert/lock icon
 ```
 
-In tables:
+Possible compact table treatment:
 
 ```text
 ✓ Safe
@@ -409,285 +453,229 @@ In tables:
 ! Blocked
 ```
 
-Exact icons may vary, but use one icon system consistently.
-
 ---
 
-# 12. AI Pass protected indicator
+# 14. Controls and inputs
 
-Near the demo-chat composer, show a small unobtrusive state:
-
-```text
-shield icon  Protected by AI Pass
-```
-
-Interaction:
-- hover/click can show current policy/service
-- briefly animates when scanning
-- should not constantly pulse
-
-This helps users trust that protection is active without occupying attention.
-
----
-
-# 13. Motion
-
-Motion should communicate causality.
-
-Preferred timings:
-- hover/focus: 120–180 ms
-- small open/close: 160–220 ms
-- intervention enter/exit: 180–260 ms
-- page section transitions: <= 300 ms
-
-Use spring motion only for:
-- intervention expansion
-- compact status transitions
-- drawer/popover arrival
-
-Avoid:
-- looping ambient object animations
-- parallax
-- scroll hijacking
-- bouncing icons
-- continuous pulsing
-- animated backgrounds
-
-### Reduced motion
-Respect:
-
-```css
-@media (prefers-reduced-motion: reduce)
-```
-
-Remove transforms/springs and keep instant or simple opacity changes.
-
----
-
-# 14. Microinteractions
-
-Good:
-- active nav background glides subtly
-- status pill cross-fades between Scanning/Safe/Protected/Blocked
-- buttons depress 1 px on pointer down
-- table row gets a subtle border/surface lift on hover
-- policy save shows compact confirmation
-- new activity row gently appears
-- `Send safely` visually transforms the outgoing message state
-
-Bad:
-- confetti
-- sound effects
-- excessive glow
-- animated gradients
-- shaking blocked content
-- “hacker scan” effects
-
----
-
-# 15. Tables and activity lists
-
-Admin activity should look closer to a premium productivity app than a SIEM.
-
-Columns:
-- time
-- user/device
-- destination
-- decision
-- categories
-- action
+Inputs should feel lightly inset into the glass system.
 
 Use:
-- quiet separators
-- compact 44–52 px rows
-- hover detail
-- readable badges
-- sticky header if needed
-- tabular numeric/time styling
+- translucent/near-white fill
+- 1 px neutral border
+- subtle inner highlight
+- clear focus ring using the accent
+- 42–48 px target height for primary form controls
 
-Do not show raw prompt previews.
+Buttons:
+- primary: accent fill or high-opacity accent gradient only if extremely restrained
+- secondary: glass/neutral
+- tertiary: text/icon
 
----
-
-# 16. Policy UI
-
-Policies should be intuitive, not written like firewall ACLs.
-
-Prefer sentence-like controls:
-
-```text
-When data is [Confidential]
-and destination is [External AI]
-then [Block]
-```
-
-or a simple matrix with strong defaults.
-
-Custom company term editor:
-
-```text
-Project Falcon     Restricted     [edit]
-Client Atlas       Confidential   [edit]
-
-+ Add protected term
-```
-
-Explain consequences inline.
+No glossy 2000s-style button effects.
 
 ---
 
-# 17. Empty states
+# 15. Motion
 
-Every major screen needs a real empty state.
+Motion communicates state and material.
 
-Examples:
+Timing:
+- hover/focus: 120–180 ms
+- popover/menu: 160–220 ms
+- intervention enter/exit: 180–260 ms
+- panel transition: <= 300 ms
 
-### No activity
+Allowed:
+- 1–2 px lift on hover
+- soft shadow interpolation
+- fade + slight scale for intervention cards
+- active nav indicator glide
+- status crossfade
+- subtle composer focus expansion
+
+Avoid:
+- continuous floating objects
+- looping glow
+- animated mesh background
+- bouncing
+- parallax
+- scroll hijacking
+- blur animation that makes text unreadable
+
+Respect `prefers-reduced-motion`.
+
+---
+
+# 16. Microinteractions
+
+Desired:
+- glass panel edge brightens slightly on hover/focus
+- buttons depress 1 px on press
+- new activity rows fade/slide in subtly
+- `Send safely` visibly transitions the outgoing message into protected state
+- policy save gives a compact confirmation
+- model/destination control opens as a small floating glass popover
+
+Do not add decorative effects with no state meaning.
+
+---
+
+# 17. Empty/loading/error states
+
+Design all states, not only populated screens.
+
+## Empty
+Example:
 > No AI activity yet  
-> Use the local demo chat with AI Pass enabled to generate your first event.
+> Use AI Pass Workspace to generate your first protected event.
 
-### No custom terms
-> No company-specific terms yet  
-> Add project, client, or document names that should receive special protection.
+## Loading
+Use layout-matching skeletons.
+Avoid full-screen spinners.
 
-### Device offline
-> This device has not checked in recently.  
-> Confirm the extension is enabled and the local API is reachable.
+## Error
+Every error has a recovery path.
 
-No decorative giant illustrations are required.
-
----
-
-# 18. Loading states
-
-Skeletons must match the final layout closely to avoid content jumps.
-
-Use subtle shimmer only if restrained.
-
-Do not show full-page spinners for local data that can load incrementally.
-
----
-
-# 19. Error states
-
-Errors should contain a recovery action.
-
-Bad:
-> Error 500
-
-Good:
+Example:
 > Couldn’t load policies.  
 > The local AI Pass API is not responding.  
 > `Retry`
 
-Do not reveal sensitive values in errors.
+Errors must never display sensitive raw values.
 
 ---
 
-# 20. Icons
+# 18. Icons
 
-Use one restrained outline icon system.
+Use one restrained outline icon system such as Lucide.
 
-Recommended style:
-- 1.5–2 px strokes
-- rounded geometry
-- simple metaphors
-- no multicolored icon pack
+Style:
+- 1.5–2 px stroke
+- simple geometry
+- monochrome by default
+- semantic color only when state matters
 
-Potential icons:
-- shield
-- activity
-- policy/sliders
-- laptop/device
-- lock
-- check
-- triangle-alert
-- eye/visibility where appropriate
+Do not use mixed icon families or colorful illustrations as navigation icons.
 
 ---
 
-# 21. Accessibility
+# 19. Accessibility
 
 Minimum:
 - WCAG AA contrast target
-- visible focus ring
-- full keyboard navigation for app controls
-- escape closes modal/popover
-- ARIA names for icon-only controls
-- color + icon + text for states
-- reduced motion
+- visible keyboard focus
+- keyboard-accessible controls
+- Escape closes overlays
+- ARIA names for icon-only actions
+- status conveyed by icon + text + color
+- reduced-motion support
 - correct heading hierarchy
-- forms have labels
-- tooltips are not the only place critical information appears
+- labels for all form controls
+- tooltips are supplementary, not the only explanation
 
-Use accessible primitives rather than rebuilding focus management.
+Glass surfaces must remain readable even if backdrop filtering is unavailable.
+Provide a solid/translucent fallback.
 
 ---
 
-# 22. Responsive behavior
+# 20. Responsive targets
 
-Primary target: desktop enterprise application.
+Primary application target is desktop.
 
-Test:
+Verify:
 - 1600 px
 - 1440 px
 - 1280 px
 - 1024 px
 
 At narrower widths:
-- sidebar may collapse
-- metrics can wrap
-- activity can reduce secondary columns
-- do not turn the dashboard into horizontal overflow
+- floating sidebar may collapse to an icon rail/drawer
+- metric cards wrap
+- secondary activity columns may hide
+- glass panels must not create horizontal overflow
 
-Extension intervention should remain usable in narrow viewport/composer contexts.
+The intervention component must remain usable in narrow browser/composer contexts.
 
 ---
 
-# 23. Design acceptance checklist
+# 21. Template and product references
 
-Before any UI-heavy phase passes:
+These references are for **design principles and layout ideas only**. Do not copy licensed templates or proprietary visual assets.
 
-- [ ] Looks intentionally designed, not scaffolded
-- [ ] Main work area dominates over navigation
-- [ ] Accent usage is restrained
-- [ ] Glass appears only where it helps hierarchy
-- [ ] Dense content uses readable solid surfaces
-- [ ] Green/yellow/red states are obvious without color alone
+### Framer — Banks Classic
+Use as reference for:
+- bright light-theme fintech presentation
+- crisp typography
+- clean modern product framing
+
+https://www.framer.com/marketplace/templates/banks-classic/
+
+### Framer — Swiper
+Use as reference for:
+- polished real product UI
+- SaaS/fintech information structure
+- theme/system consistency
+
+https://www.framer.com/marketplace/templates/swiper/
+
+### Framer — Saro
+Use as reference for:
+- calm premium gray system
+- restrained single-accent approach
+- clean animated product presentation
+
+https://www.framer.com/marketplace/templates/saro/
+
+### Framer — PingPong App
+Use as reference for:
+- MENA-aware SaaS presentation
+- bilingual/RTL thinking for future expansion
+- modern fintech framing
+
+https://www.framer.com/marketplace/templates/pingpong-app/
+
+### Apple Human Interface Guidelines — Materials
+Use as reference for material hierarchy and legibility, not as a component library.
+
+https://developer.apple.com/design/human-interface-guidelines/materials
+
+### Vercel Design / Web Interface Guidelines
+Use for interaction/state discipline and interface craft.
+
+https://vercel.com/design
+
+### Existing Chromastic site
+Keep its disciplined typography, spacing, and clean simplicity, but AI Pass must be more dimensional and glass-led rather than flat/white.
+
+---
+
+# 22. Design acceptance checklist
+
+A UI revision does not pass unless all of the following are true:
+
+- [ ] Default theme is visibly light, not dark/graphite
+- [ ] The old “Orbit” brand/dark shell is gone
+- [ ] Visible glassmorphism exists in navigation and key interaction surfaces
+- [ ] Glass uses blur + transparency + edge highlight + soft shadow
+- [ ] Background has enough subtle tonal variation for glass to read
+- [ ] The interface is still highly legible
+- [ ] Admin looks like a premium management workspace, not a SOC console
+- [ ] AI Pass Workspace does not look like a generic ChatGPT clone
+- [ ] Composer is a polished signature glass surface
+- [ ] Green/yellow/red states use icon + label + semantic accent
+- [ ] Yellow `Send safely` state receives special visual care
 - [ ] No raw sensitive content appears in admin UI
 - [ ] Hover/focus/pressed/disabled states exist
-- [ ] Empty/loading/error states exist where relevant
-- [ ] Reduced motion works
-- [ ] 1024–1600 px widths checked
-- [ ] No clipped text or unintended scrollbars
-- [ ] No giant marketing typography inside app
-- [ ] No generic template/dashboard feel
+- [ ] Empty/loading/error states are designed
+- [ ] Reduced-motion behavior works
+- [ ] 1024, 1280, 1440, and 1600 px widths are checked
+- [ ] No clipping or unintended horizontal scrolling
+- [ ] No giant marketing typography inside the application
+- [ ] No unnecessary chart/dashboard filler
+- [ ] UI looks intentionally designed rather than scaffolded
 
 ---
 
-# 24. Design references researched
+# 23. One-line visual brief for Codex
 
-These are references for principles, not templates to copy.
-
-- Existing Chromastic repository: clean Geist typography, cool accent, soft surfaces, rounded controls.
-- Linear 2026 UI refresh: calm hierarchy, consistent navigation, dimmer sidebars so content stays primary.
-- Attio: high-speed compact UI, command/search orientation, polished data surfaces.
-- Apple Human Interface Guidelines — Materials / Liquid Glass: glass as a functional navigation/control layer, use sparingly.
-- Vercel Web Interface Guidelines: all UI states, recovery paths, redundant status cues, inline help.
-- Radix Primitives: accessible low-level interaction behavior.
-- shadcn/ui: open component code may be used as a structural starting point, but final visuals must be AI Pass-specific.
-
-Useful URLs:
-- https://linear.app/now/behind-the-latest-design-refresh
-- https://linear.app/changelog/2026-03-12-ui-refresh
-- https://attio.com/
-- https://developer.apple.com/design/human-interface-guidelines/materials
-- https://vercel.com/design/guidelines
-- https://www.radix-ui.com/primitives
-- https://ui.shadcn.com/
-
----
-
-# 25. One-line visual brief for Codex
-
-> Build AI Pass like a calm premium productivity/security application: graphite workspace, restrained indigo/teal signal color, solid readable data surfaces, selective glass navigation and interventions, crisp Geist typography, compact information density, and purposeful motion — futuristic enough to feel new, disciplined enough to trust with enterprise security.
+> Build AI Pass as a bright premium glassmorphism workspace: airy off-white atmospheric canvas, frosted white floating surfaces, visible blur and edge highlights, crisp dark typography, restrained indigo/aqua accents, soft dimensional shadows, elegant spacing, and purposeful motion — modern enough to feel state-of-the-art, disciplined enough to trust with enterprise security.
