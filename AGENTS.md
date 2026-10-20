@@ -33,9 +33,12 @@ Read only what the task needs:
 - Build phase scope/gates: `README.md`
 - Product direction: `docs/PRODUCT_DIRECTION.md`
 - Service boundaries/data flow: `docs/ARCHITECTURE.md`
-- Any UI/UX work: `docs/DESIGN_SYSTEM.md`
+- Any UI/UX work: `docs/DESIGN_REFINEMENT_V2.md` first, then `docs/DESIGN_SYSTEM.md`
 - Visual reference intent: `docs/UI_REFERENCE_BOARD.md`
+- Persistent reference-image instructions: `docs/design-references/README.md`
 - Previous observed implementation evidence: `docs/BUILD_LOG.md`
+
+For UI work, `docs/DESIGN_REFINEMENT_V2.md` supersedes conflicting older visual guidance.
 
 Do not reread every document for trivial edits.
 
@@ -104,23 +107,30 @@ For a security-sensitive change, add or update a regression test.
 
 ## UI rules
 
-For UI tasks, follow both:
-- `docs/DESIGN_SYSTEM.md`
-- `docs/UI_REFERENCE_BOARD.md`
+For UI tasks, follow in this priority order:
+1. `docs/DESIGN_REFINEMENT_V2.md`
+2. user-supplied reference images, especially `docs/design-references/primary-glass-dashboard.png` when present
+3. `docs/DESIGN_SYSTEM.md`
+4. `docs/UI_REFERENCE_BOARD.md`
 
 Critical constraints:
 - **light-first** premium glassmorphism is mandatory
 - the previous dark/graphite/“Orbit” direction is retired
+- the current purple/lavender AI-SaaS direction is also rejected
+- no purple/lilac/indigo product accent, purple icon tiles, or purple send control
+- use warm-neutral material with restrained orange/copper brand signal unless explicitly changed by the user
+- no robot, shield+sparkle, magic-wand, or generic AI-star branding
+- use Instrument Sans by default for the refined UI; Manrope is the preferred fallback
+- prefer a narrow detached floating navigation rail over a permanent ChatGPT-style wide sidebar
+- prefer one dominant glass application plane with readable inner surfaces over repeated identical white cards
 - visible frosted-glass material must use blur + translucency + edge highlight + soft shadow
-- background must have subtle tonal variation so the glass reads clearly
-- no generic white SaaS dashboard
+- background must have meaningful tonal/light variation so the glass reads clearly
 - no default shadcn/component-library visual appearance
 - no dark security console / neon / cyberpunk styling
-- glass is selective and hierarchical, not applied equally everywhere
-- status uses icon + label + color
+- status uses icon + label + semantic color
 - keyboard/focus states are required
 - support `prefers-reduced-motion`
-- animations must clarify state changes, not decorate continuously
+- animations must clarify state/material changes, not decorate continuously
 - visible employee chat surface is **AI Pass Workspace**, not “Orbit”
 - do not add real AI-provider/model integrations unless explicitly requested by a later phase
 
@@ -189,6 +199,7 @@ Update:
 - `README.md` when build phases or run instructions change
 - `docs/PRODUCT_DIRECTION.md` when product scope/direction changes
 - `docs/ARCHITECTURE.md` when service/data boundaries change
+- `docs/DESIGN_REFINEMENT_V2.md` for current high-priority visual corrections
 - `docs/DESIGN_SYSTEM.md` when durable UI rules/tokens change
 - `docs/UI_REFERENCE_BOARD.md` when durable visual references change
 - `docs/BUILD_LOG.md` with observed phase evidence
